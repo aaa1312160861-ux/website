@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我的第一个月健身打卡计划</title>
+<style>
+:root{--green:#699331;--green2:#edf4e5;--ink:#20251b;--muted:#687064;--line:#e1e6dc;--bg:#f6f8f3;--white:#fff;--blue:#e8f1ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65}
+header{background:linear-gradient(135deg,#263b18,var(--green));color:white;padding:34px 18px 30px}
+.wrap{max-width:1020px;margin:auto;padding:0 16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;opacity:.85}.hero h1{font-size:clamp(27px,5vw,42px);line-height:1.2;margin:9px 0 12px}.hero p{max-width:720px;margin:0;color:#f0f5e9}
+.notice{background:#fff7e6;border:1px solid #eed9a7;border-radius:14px;padding:14px 16px;margin:20px auto;color:#59451b}
+main{padding:10px 0 48px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.stat,.panel{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:0 3px 12px #263b1808}.stat strong{display:block;font-size:24px;color:var(--green)}.stat span{font-size:13px;color:var(--muted)}
+h2{font-size:22px;margin:30px 0 12px}h3{font-size:17px;margin:0 0 7px}.sub{color:var(--muted);font-size:14px;margin-top:-4px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tab{border:1px solid var(--line);border-radius:999px;padding:9px 15px;background:#fff;color:var(--ink);cursor:pointer;font-weight:600}.tab.active{background:var(--green);border-color:var(--green);color:white}
+.progress{height:9px;background:#e8ecdf;border-radius:20px;overflow:hidden;margin:10px 0 18px}.progress div{height:100%;width:0;background:var(--green);transition:width .2s}
+.dayhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}.pill{font-size:12px;padding:4px 9px;background:var(--green2);color:#42621f;border-radius:999px;white-space:nowrap}
+.item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #edf0e9;align-items:flex-start}.item:last-child{border-bottom:0}.item input{width:19px;height:19px;margin-top:4px;accent-color:var(--green);flex-shrink:0}.item label{cursor:pointer;flex:1}.item strong{display:block}.meta{font-size:13px;color:var(--muted)}.checked strong{text-decoration:line-through;color:#7c8476}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.guide{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}.guide summary{cursor:pointer;padding:16px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}.guide summary:after{content:"＋";color:var(--green)}.guide[open] summary:after{content:"−"}.guidebody{padding:0 16px 16px}.guidebody ol,.guidebody ul{padding-left:21px}.guidebody li{margin:6px 0}.label{display:inline-block;font-size:12px;background:#f0f3ec;border-radius:6px;padding:3px 7px;color:#526047;margin:2px 4px 4px 0}
+button{font:inherit;cursor:pointer}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.btn{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:10px;font-weight:600}.btn.primary{background:var(--green);color:white;border-color:var(--green)}.foot{color:var(--muted);font-size:13px;margin-top:26px}
+.weeknav{display:flex;justify-content:space-between;align-items:center;gap:10px}.weeknav button{border:1px solid var(--line);border-radius:9px;background:#fff;padding:7px 11px}.rest{background:#f8faf5;border:1px dashed #cdd8c2;padding:13px;border-radius:12px;color:#56634c}
+@media(max-width:680px){.grid{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:20px}.hero{padding-top:27px}.dayhead{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="wrap hero">
+<div class="eyebrow">BEGINNER · 4-WEEK PLAN</div>
+<h1>我的第一个月健身打卡</h1>
+<p>肩部优先 · 肩背力量 · 体态活动 · 新手器械教程<br>循序渐进，不拼重量，先学会稳定、舒适地完成动作。</p>
+</div></header>
+<main class="wrap">
+<div class="notice"><strong>训练安全提醒</strong><br>你提供的身高155cm、体重37kg，若为成年人，BMI约15.4，属于明显偏低范围。建议先向医生/注册营养师评估低体重原因及是否适合负重训练。评估前先做轻柔、无痛的活动度练习，不做高强度或力竭训练。训练中如头晕、心慌、胸痛、异常气短或明显乏力，立即停止并按症状寻求医疗帮助。</div>
+<div class="stats">
+<div class="stat"><strong id="completed">0</strong><span>已完成打卡项</span></div>
+<div class="stat"><strong id="total">0</strong><span>本月计划打卡项</span></div>
+<div class="stat"><strong id="percent">0%</strong><span>完成进度</span></div>
+</div>
+<section class="panel">
+<div class="weeknav"><div><h2 style="margin:0">每周训练表</h2><div class="sub">点击项目即可打卡，进度会保存在当前浏览器。</div></div>
+<div><button id="prev">←</button> <button id="next">→</button></div></div>
+<div class="tabs" id="weeks"></div>
+<div class="progress"><div id="bar"></div></div>
+<div class="dayhead"><h3 id="weekTitle">第1周 · 动作学习期</h3><span class="pill" id="weekFocus">每周2次力量训练</span></div>
+<div id="schedule"></div>
+<div class="actions"><button class="btn" id="clearWeek">清空本周打卡</button><button class="btn" id="export">导出打卡记录</button></div>
+</section>
+<h2>器械使用教程</h2>
+<p class="sub">每次第一次使用某台器械，请工作人员或教练现场确认座椅、配重和活动范围。先用最轻档试动作；如果最轻档也无法控制，就先不要做。</p>
+<div class="grid">
+<details class="guide"><summary>1. 坐姿划船机</summary><div class="guidebody">
+<span class="label">背部基础</span><span class="label">10–12次</span><span class="label">休息90秒</span>
+<h3>怎么调</h3><ol><li>坐好，双脚踩稳踏板，膝盖微屈。</li><li>选择舒适的中立握把；配重先从最轻档开始。</li><li>身体保持自然直立，不要为了够远而弓背。</li></ol>
+<h3>怎么做</h3><ol><li>手臂向前伸出，肩膀保持自然放松。</li><li>呼气，把手柄拉向腹部附近，手肘向后移动。</li><li>躯干不摇晃，缓慢伸出手臂回到起点。</li></ol>
+<p><strong>避免：</strong>猛拉、前后摇摆、耸肩、刻意把肩胛骨夹到最紧。第1周1组，熟练后1–2组。</p></div></details>
+<details class="guide"><summary>2. 高位下拉机</summary><div class="guidebody">
+<span class="label">背阔肌与背部</span><span class="label">8–12次</span><span class="label">休息90–120秒</span>
+<h3>怎么调</h3><ol><li>坐在座椅上，把大腿固定垫调到能稳稳固定大腿、不压痛的位置。</li><li>双手握横杆，间距略宽于肩；从最轻配重开始。</li></ol>
+<h3>怎么做</h3><ol><li>躯干自然直立，轻轻把横杆拉向上胸部。</li><li>手肘向两侧、稍向下移动。</li><li>缓慢伸直手臂回到顶部，配重片不要猛撞。</li></ol>
+<p><strong>避免：</strong>把杆拉到颈后、身体大幅后仰、猛拽。如果最轻档也难控制，先请教练示范或暂缓。</p></div></details>
+<details class="guide"><summary>3. 哑铃侧平举</summary><div class="guidebody">
+<span class="label">肩部中束</span><span class="label">10–15次</span><span class="label">休息60–90秒</span>
+<h3>准备</h3><ol><li>双脚与髋部大致同宽，双手自然垂在身体两侧。</li><li>手肘微弯，先选最轻且能控制的哑铃。</li></ol>
+<h3>怎么做</h3><ol><li>手臂向身体两侧抬起，略微位于身体前方。</li><li>抬到肩部附近的舒适高度，不必强求更高。</li><li>控制着慢慢放下，不要甩下来。</li></ol>
+<p><strong>避免：</strong>耸肩、身体摇摆、憋气或为了举重而甩手。若最轻哑铃也难控制，先请教练指导替代方案。</p></div></details>
+<details class="guide"><summary>4. 蝴蝶机反向飞鸟</summary><div class="guidebody">
+<span class="label">肩后侧与上背</span><span class="label">10–12次</span><span class="label">休息60–90秒</span>
+<h3>怎么调</h3><ol><li>确认器械已切换到反向飞鸟模式，不确定就请教练调节。</li><li>座椅调到手臂大致在肩部高度，胸部轻贴靠垫。</li><li>配重先选最轻档。</li></ol>
+<h3>怎么做</h3><ol><li>双手握住手柄，手肘自然微弯。</li><li>向两侧打开手臂，保持肩膀远离耳朵。</li><li>在舒适范围内缓慢回到起点。</li></ol>
+<p><strong>避免：</strong>挺腰、猛甩、耸肩或追求过大的活动范围。</p></div></details>
+<details class="guide"><summary>5. 器械推肩（可选）</summary><div class="guidebody">
+<span class="label">肩部推举</span><span class="label">8–10次</span><span class="label">休息90–120秒</span>
+<h3>怎么调</h3><ol><li>座椅调到手柄大致位于肩部至耳朵下方。</li><li>背部贴靠垫，双脚踩稳，配重选最轻档。</li></ol>
+<h3>怎么做</h3><ol><li>手肘位于身体两侧稍向前的位置。</li><li>平稳向上推，不必强行锁死手肘。</li><li>缓慢回到舒适起始位置。</li></ol>
+<p><strong>避免：</strong>拱腰、耸肩、憋气或肩关节刺痛。新手可先由教练确认动作和肩部活动情况，再决定是否加入。</p></div></details>
+<details class="guide"><summary>6. V杠划船：和坐姿划船怎么选？</summary><div class="guidebody">
+<span class="label">划船变式</span><span class="label">10–12次</span>
+<p>如果V杠划船和坐姿划船都是坐姿拉手柄的器械，它们训练目标相近。一个训练日选其中一个就可以，不必每次都做两种。</p>
+<ol><li>坐稳，脚踩踏板，脊柱保持自然位置。</li><li>把V杠拉向腹部附近，手肘沿身体两侧向后。</li><li>控制回程，身体不要前后摇摆。</li></ol>
+<p>组数从1组开始，动作稳定后再加到1–2组。</p></div></details>
+<details class="guide"><summary>7. 泡沫轴放松上背部</summary><div class="guidebody">
+<span class="label">热身</span><span class="label">20–30秒</span>
+<ol><li>泡沫轴放在上背部，不要直接压颈椎或腰部。</li><li>轻柔地前后滚动，找到舒适范围即可。</li><li>不要在疼痛处用力压，也不需要追求越痛越有效。</li></ol>
+<p>泡沫轴是可选的热身工具，不是纠正体态的必需动作。</p></div></details>
+<details class="guide"><summary>8. 靠墙滑手 + 下巴回收</summary><div class="guidebody">
+<span class="label">体态活动</span><span class="label">每项6–10次</span>
+<h3>靠墙滑手</h3><ol><li>前臂轻贴墙面，肩膀自然放松。</li><li>在无痛范围内缓慢向上滑，再慢慢放下。</li><li>不必强迫手臂全程贴墙。</li></ol>
+<h3>下巴回收</h3><ol><li>坐直或靠墙站立，眼睛平视。</li><li>下巴水平向后移动，像轻微做双下巴，不是低头。</li><li>停留3–5秒后放松，做8–10次。</li></ol>
+<p>若出现颈部疼痛、眩晕、手臂麻木或肩部夹痛，停止动作。</p></div></details>
+</div>
+<h2>每次训练的快速流程</h2>
+<div class="panel">
+<div class="item"><input type="checkbox" class="quick"><label><strong>热身 5分钟</strong><span class="meta">轻松步行、温和绕肩；不要猛甩手臂。</span></label></div>
+<div class="item"><input type="checkbox" class="quick"><label><strong>力量训练 15–20分钟</strong><span class="meta">按当天A/B表做动作，组间休息60–120秒。</span></label></div>
+<div class="item"><input type="checkbox" class="quick"><label><strong>体态练习 5–7分钟</strong><span class="meta">靠墙滑手、下巴回收、温和胸椎活动。</span></label></div>
+<div class="item"><input type="checkbox" class="quick"><label><strong>训练后记录状态</strong><span class="meta">记下动作、配重、次数、是否有不适及恢复情况。</span></label></div>
+<button class="btn" id="resetQuick">重置本次流程</button>
+</div>
+<h2>四周进阶原则</h2>
+<div class="panel">
+<ul>
+<li><strong>第1周：</strong>每周2次力量训练，每个动作先1组，熟悉器械和动作。</li>
+<li><strong>第2周：</strong>动作稳定且恢复良好时，熟悉的动作增加到1–2组。</li>
+<li><strong>第3周：</strong>身体恢复良好时可考虑每周3次；不是必须，不增加所有动作的训练量。</li>
+<li><strong>第4周：</strong>保持稳定，记录动作质量和舒适程度；不测试最大重量，不练到力竭。</li>
+</ul>
+<p><strong>饮食与恢复：</strong>不要为了健身减少进食或刻意减脂。保持规律三餐和充足营养；低体重原因与营养需求建议向医生或注册营养师确认。</p>
+</div>
+<p class="foot">记录仅保存在此浏览器中。清理浏览器数据或换设备后，记录可能不会保留；需要备份时请使用“导出打卡记录”。本计划是一般健身教育内容，不替代医疗评估或现场动作指导。</p>
+</main>
+<script>
+const weeks = [
+ {title:"第1周 · 动作学习期",focus:"每周2次力量训练",days:[
+  {day:"周一 · A日",kind:"肩部重点 + 上背部",items:[["热身：轻松步行","5分钟"],["泡沫轴放松上背部","20–30秒 × 1轮（可选）"],["绕肩 + 肩胛控制","各8–10次 × 1组"],["坐姿划船","1组 × 10–12次"],["哑铃侧平举","1组 × 10次（能稳定控制时）"],["蝴蝶机反向飞鸟","1组 × 10次（能稳定控制时）"],["靠墙滑手","1组 × 6–8次"]] },
+  {day:"周四 · B日",kind:"背部 + 全身基础",items:[["热身：轻松步行","5分钟"],["高位下拉","1组 × 8–10次（教练确认后）"],["V杠划船或坐姿划船","1组 × 10次（二选一）"],["徒手臀桥","1组 × 8–10次"],["下巴回收","8次，每次停留3秒"],["温和胸部/肩部拉伸","每个动作20秒"]] },
+  {day:"其他日",kind:"恢复与活动",rest:true,items:[["轻柔体态活动","约10分钟，可选"],["充分休息、规律进餐","不需要补练"]] }
+ ]},
+ {title:"第2周 · 稳定动作期",focus:"每周2次力量训练",days:[
+  {day:"周一 · A日",kind:"肩部重点 + 上背部",items:[["热身","5分钟"],["坐姿划船","1–2组 × 10–12次"],["哑铃侧平举","1–2组 × 10–12次"],["蝴蝶机反向飞鸟","1–2组 × 10–12次"],["靠墙滑手","1组 × 8次"]] },
+  {day:"周四 · B日",kind:"背部 + 全身基础",items:[["热身","5分钟"],["高位下拉","1–2组 × 8–12次（动作稳定时）"],["V杠划船或坐姿划船","1–2组 × 10–12次（二选一）"],["徒手臀桥","1–2组 × 8–12次"],["下巴回收","8–10次"]] },
+  {day:"其他日",kind:"恢复与活动",rest:true,items:[["轻柔体态活动","约10分钟，可选"],["休息和恢复","不需要补练"]] }
+ ]},
+ {title:"第3周 · 建立规律期",focus:"恢复良好才考虑第3练",days:[
+  {day:"周一 · A日",kind:"肩部重点 + 上背部",items:[["热身","5分钟"],["坐姿划船","1–2组 × 10–12次"],["哑铃侧平举","1–2组 × 10–15次"],["蝴蝶机反向飞鸟","1–2组 × 10–12次"],["靠墙滑手","1组 × 8–10次"]] },
+  {day:"周四 · B日",kind:"背部 + 全身基础",items:[["热身","5分钟"],["高位下拉","1–2组 × 8–12次"],["V杠划船或坐姿划船","1–2组 × 10–12次（二选一）"],["器械推肩（可选）","1组 × 8–10次，确认无痛并经指导后"],["徒手臀桥","1–2组 × 10次"]] },
+  {day:"周六 · 可选A日",kind:"仅在恢复良好时",optional:true,items:[["轻量A日","重复周一A日，但不增加重量或组数"],["若疲惫或恢复不佳","休息即可，不补练"]] }
+ ]},
+ {title:"第4周 · 巩固与复盘期",focus:"保持动作质量",days:[
+  {day:"周一 · B日",kind:"背部 + 全身基础",items:[["热身","5分钟"],["高位下拉","1–2组 × 8–12次"],["V杠划船或坐姿划船","1–2组 × 10–12次（二选一）"],["徒手臀桥","1–2组 × 10–12次"],["下巴回收 + 靠墙滑手","各1组"]] },
+  {day:"周四 · A日",kind:"肩部重点 + 上背部",items:[["热身","5分钟"],["坐姿划船","1–2组 × 10–12次"],["哑铃侧平举","1–2组 × 10–15次"],["蝴蝶机反向飞鸟","1–2组 × 10–12次"],["靠墙滑手","1组 × 8–10次"]] },
+  {day:"周六 · 可选B日",kind:"仅在恢复良好时",optional:true,items:[["轻量B日","重复周四B日，不测试最大重量"],["记录本月感受","动作是否更稳、恢复是否良好"],["如果需要更多休息","休息即可"]] }
+ ]}
+];
+let current=0;
+const key="beginnerFitnessCheckinV1";
+let checks={};
+try{checks=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){checks={}}
+const weeksEl=document.getElementById("weeks"), schedule=document.getElementById("schedule");
+function save(){try{localStorage.setItem(key,JSON.stringify(checks))}catch(e){}}
+function idFor(w,d,i){return `w${w}-d${d}-i${i}`}
+function render(){
+ weeksEl.innerHTML="";
+ weeks.forEach((w,i)=>{let b=document.createElement("button");b.className="tab"+(i===current?" active":"");b.textContent=`第${i+1}周`;b.onclick=()=>{current=i;render()};weeksEl.appendChild(b)});
+ const week=weeks[current];document.getElementById("weekTitle").textContent=week.title;document.getElementById("weekFocus").textContent=week.focus;
+ schedule.innerHTML="";
+ week.days.forEach((day,di)=>{
+  const card=document.createElement("div");card.className="panel";card.style.marginBottom="12px";
+  const head=document.createElement("div");head.className="dayhead";
+  const title=document.createElement("h3");title.textContent=day.day;head.appendChild(title);
+  const pill=document.createElement("span");pill.className="pill";pill.textContent=day.kind;head.appendChild(pill);card.appendChild(head);
+  if(day.rest){const rest=document.createElement("div");rest.className="rest";rest.textContent="恢复日：不需要补练。轻柔活动以舒适为准；如果疲惫，完全休息也可以。";card.appendChild(rest)}
+  day.items.forEach((it,ii)=>{
+   const id=idFor(current,di,ii), row=document.createElement("div");row.className="item"+(checks[id]?" checked":"");
+   const cb=document.createElement("input");cb.type="checkbox";cb.checked=!!checks[id];cb.id=id;cb.addEventListener("change",()=>{checks[id]=cb.checked;save();render()});
+   const label=document.createElement("label");label.htmlFor=id;const strong=document.createElement("strong");strong.textContent=it[0];const meta=document.createElement("span");meta.className="meta";meta.textContent=it[1];label.append(strong,meta);row.append(cb,label);card.appendChild(row);
+  });
+  schedule.appendChild(card);
+ });
+ updateStats();
+}
+function updateStats(){
+ let all=0,done=0;weeks.forEach((w,wi)=>w.days.forEach((d,di)=>d.items.forEach((it,ii)=>{all++;if(checks[idFor(wi,di,ii)])done++})));
+ document.getElementById("completed").textContent=done;document.getElementById("total").textContent=all;document.getElementById("percent").textContent=(all?Math.round(done/all*100):0)+"%";
+ document.getElementById("bar").style.width=(all?done/all*100:0)+"%";
+}
+document.getElementById("prev").onclick=()=>{current=Math.max(0,current-1);render()};
+document.getElementById("next").onclick=()=>{current=Math.min(weeks.length-1,current+1);render()};
+document.getElementById("clearWeek").onclick=()=>{if(confirm("确定清空本周打卡吗？")){Object.keys(checks).filter(k=>k.startsWith("w"+current+"-")).forEach(k=>delete checks[k]);save();render()}};
+document.getElementById("export").onclick=()=>{let rows=["周次,日期/训练日,项目,计划"];weeks.forEach((w,wi)=>w.days.forEach((d,di)=>d.items.forEach((it,ii)=>rows.push([w.title,d.day,it[0],(checks[idFor(wi,di,ii)]?"已完成":"未完成")+"；"+it[1]].map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(","))));const blob=new Blob(["\ufeff"+rows.join("\n")],{type:"text/csv;charset=utf-8;"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="我的健身打卡记录.csv";a.click();URL.revokeObjectURL(url)};
+document.getElementById("resetQuick").onclick=()=>document.querySelectorAll(".quick").forEach(x=>x.checked=false);
+render();
+</script>
+</body></html>
